@@ -1,0 +1,47 @@
+<%- model_class = Organization -%>
+<div class="page-header">
+<h1>Список компаний</h1>
+  </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <!--<th><%= model_class.human_attribute_name(:id) %></th>-->
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Каталог</th>
+      <th><%= model_class.human_attribute_name(:adress) %></th>
+      <th><%= model_class.human_attribute_name(:org_type) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:telephone1) %></th>
+      <!--<th><%= model_class.human_attribute_name(:created_at) %></th>-->
+      <!--<th><%=t '.actions', :default => t("helpers.actions") %></th>-->
+    </tr>
+  </thead>
+  <tbody>
+    <% @organizations.each do |organization| %>
+    <% #if organization.org_type != current_user.organization.org_type  %>  
+      <tr>
+        <!--<td><%= link_to organization.id, organization_path(organization) %></td>-->
+        <td><%= link_to organization.name, organization_path(organization) %></td>
+        <td><%= link_to "список товаров", organization_products_path(organization) %></td>
+        <td><%= organization.adress %></td>
+        <td><%= organization.org_type %></td>
+        <td><%= organization.email %></td>
+        <td><%= organization.telephone1 %></td>
+        <!--<td><%=l organization.created_at %></td>-->
+       <% if organization.user_id == current_user.id %> 
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_organization_path(organization), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      organization_path(organization),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td> <%end%>
+      </tr>
+      <%#end%>
+    <% end %>
+  </tbody>
+</table>
+
+<!--<%= link_to t('.new', :default => t("helpers.links.new")), new_organization_path, :class => 'btn btn-primary' %>-->

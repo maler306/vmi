@@ -1,0 +1,26 @@
+<%= simple_form_for @path, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :distributor_cod %>
+  <%= error_span(@product[:distributor_cod]) %>
+  <%= f.input :bar_cod %>
+  <%= error_span(@product[:bar_cod]) %>
+  <%= f.input :name %>
+  <%= error_span(@product[:name]) %>
+  <%= f.input :groupe %>
+  <%= error_span(@product[:groupe]) %>
+  <%= f.input :subgroup %>
+  <%= error_span(@product[:subgroup]) %>
+  <%= f.input :brand %>
+  <%= error_span(@product[:brand]) %>
+  <%= f.input :pack %>
+  <%= error_span(@product[:pack]) %>
+  <%= f.input :measure, collection: ["шт", "кг"] %>
+  <%= error_span(@product[:measure]) %>
+  <%= f.input :boxing %>
+  <%= error_span(@product[:boxing]) %>
+   <%= f.input :avatar, as: :file %>
+ 
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+               @path, :class => 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,29 @@
+<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">VMI service</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= root_path %>">Home</a></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "Список поставщиков", organizations_path %></a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+         <% if not user_signed_in? %>
+          <li><%= link_to "Регистрация", new_user_registration_path%></li>
+          <li><%= link_to "Вход", new_user_session_path%></li>
+      <% else %>
+      
+          <li><%= link_to current_user.name, user_path(current_user) %></li>
+          <li class="btn btn-xs btn-info"><%= link_to "Выход", destroy_user_session_path, method: :delete %></li>
+      <% end %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>   
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

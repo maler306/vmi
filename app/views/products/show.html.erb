@@ -1,0 +1,45 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<div class="col-md-2"><%= image_tag @product.avatar.url(:medium) %></div>
+<div class="col-md-10">
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:distributor_cod) %>:</strong></dt>
+  <dd><%= @product.distributor_cod %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bar_cod) %>:</strong></dt>
+  <dd><%= @product.bar_cod %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @product.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:subgroup) %>:</strong></dt>
+  <dd><%= @product.subgroup %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:groupe) %>:</strong></dt>
+  <dd><%= @product.groupe %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:brand) %>:</strong></dt>
+  <dd><%= @product.brand %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pack) %>:</strong></dt>
+  <dd><%= @product.pack %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:measure) %>:</strong></dt>
+  <dd><%= @product.measure %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:boxing) %>:</strong></dt>
+  <dd><%= @product.boxing %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:organization_id) %>:</strong></dt>
+  <dd><%= @product.organization.name %></dd>
+   <dt><strong>Цена, тг:</strong></dt>
+  <dd><% @product.prices.each do |price| %>
+    <%= price.value %>
+    <%end %></dd>
+    </dl></div>
+
+
+<%= link_to 'New Price', new_product_price_path(@product), :class => 'btn btn-default' %>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              organization_products_path(@organization), :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_product_path(@product), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              product_path(@product),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

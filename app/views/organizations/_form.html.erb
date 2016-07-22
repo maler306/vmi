@@ -1,0 +1,18 @@
+<%= simple_form_for @organization, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@organization[:name]) %>
+  <%= f.input :adress %>
+  <%= error_span(@organization[:adress]) %>
+  <%= f.input :org_type, collection: ["поставщик", "магазин"] %>
+  <%= error_span(@organization[:org_type]) %>
+  <%= f.input :email %>
+  <%= error_span(@organization[:email]) %>
+  <%= f.input :telephone1 %>
+  <%= error_span(@organization[:telephone1]) %>
+  <!--<%#= f.input  :user_id %>-->
+  <!--<%#= error_span(@user[:user_id]) %>-->
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                organizations_path, :class => 'btn btn-default' %>
+<% end %>

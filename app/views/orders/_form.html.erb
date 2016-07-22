@@ -1,0 +1,12 @@
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%#= f.input :user_id %>
+  <%#= error_span(@order[:user_id]) %>
+  <%= f.input :state, collection: ["Новый заказ" ]  %>
+  <%= error_span(@order[:state]) %>
+  <%= f.input :organization_id, collection: current_user.organizations %>
+  <%= error_span(@order[:organization_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                orders_path, :class => 'btn btn-default' %>
+<% end %>

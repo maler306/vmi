@@ -1,0 +1,10 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<% if user_signed_in? %>
+<li><%= link_to "список компаний пользователя: #{current_user.name}", user_path(current_user), class: "btn btn-xl " %></li>
+<li><%= link_to "переход к списку заказов", orders_path, class: "btn btn-xl " %></li>
+<% end %>
+<li><%= link_to "создать нового пользователя", new_user_path, class: "btn btn-primary btn-xl" %></li>
+<li><%= link_to "создать новую организацию", new_organization_path, class: "btn btn-primary btn-xl" %></li>
+

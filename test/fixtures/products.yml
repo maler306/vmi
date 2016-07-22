@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  distributor_cod: 1
+  bar_cod: 1
+  name: MyString
+  subgroup: MyString
+  groupe: MyString
+  brand: MyString
+  pack: MyString
+  measure: MyString
+  boxing: MyString
+  organization_id: 1
+
+two:
+  distributor_cod: 1
+  bar_cod: 1
+  name: MyString
+  subgroup: MyString
+  groupe: MyString
+  brand: MyString
+  pack: MyString
+  measure: MyString
+  boxing: MyString
+  organization_id: 1

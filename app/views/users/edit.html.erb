@@ -1,0 +1,22 @@
+<h2>редактировать профайл пользователя</h2>
+
+<%= simple_form_for @user do |f|  %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :organization_id, collection: current_user.organizations %>
+    <%= f.input :position, collection:['оператор','покупатель','супервайзер','руководитель']  %>
+    <%= f.input :telephone %>
+    <%= f.input :email %>
+    <%= f.input :password, input_html: {minlength: 6, maxlength: 20 } %>
+    <%= f.input :password_confirmation %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+  
