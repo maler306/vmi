@@ -8,8 +8,8 @@ class Ability
         can :manage, :all
       else
         can :read, :all
-        can :create, [Organization, User, Product, Order]
-        can :manage, [Cart, LineItem]
+        can :create, [Organization, User, Product, Order, Staff]
+        can :manage, [Cart, LineItem, Order]
         can [:destroy, :edit], Organization do |object|
         object.user_id == user.id
         end

@@ -1,0 +1,15 @@
+<%= simple_form_for(@staff) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :organization %>
+    <%= f.association :user %>
+    <%#= f.input :user_id %>
+    <%#= f.input :organization_id %>
+    <%= f.input :position, collection:['оператор','покупатель','супервайзер','руководитель'] %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

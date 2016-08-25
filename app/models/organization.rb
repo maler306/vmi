@@ -22,6 +22,7 @@ class Organization < ActiveRecord::Base
   has_many :outgoing_orders, through: :users, source: :orders
   
   has_many :prices, through: :products
+  has_many :staffs
   
   validates :name, length: { minimum: 3 }, presence: true, uniqueness: true
   validates :adress, presence: true

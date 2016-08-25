@@ -3,7 +3,7 @@
   <%#= error_span(@order[:user_id]) %>
   <%= f.input :state, collection: ["Новый заказ" ]  %>
   <%= error_span(@order[:state]) %>
-  <%= f.input :organization_id, collection: current_user.organizations %>
+  <%= f.input :organization_id, collection: current_user.employers %>
   <%= error_span(@order[:organization_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

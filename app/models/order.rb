@@ -23,5 +23,8 @@ class Order < ActiveRecord::Base
         end 
     end
 
+    def seller
+        line_items.first.organization
+    end
     
 end

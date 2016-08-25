@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_many :organizations
   
   has_many :orders
+  has_many :staffs
+  has_many :employers, through: :staffs, source: :organization
   
   extend FriendlyId
   friendly_id :custom_slug, use: :slugged

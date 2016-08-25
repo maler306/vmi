@@ -34,7 +34,8 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.new(order_params)
     @order.add_line_items_from_cart(@cart)
-    @order.organization = @cart.organization
+    @order.organization = current_user.organizations(order_params)
+    #@order.organization = @cart.organization
 
     respond_to do |format|
       if @order.save
@@ -83,6 +84,6 @@ class OrdersController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :state)
+      params.require(:order).permit(:user_id, :organization_id, :state)
     end
 end
