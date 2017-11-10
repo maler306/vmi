@@ -14,15 +14,18 @@
 #
 
 class Organization < ActiveRecord::Base
-   
-  has_many :users 
+  
+  has_many :staffs
+  has_many :employees, through: :staffs, source: :user
+  
+  #has_many :users 
   belongs_to :user
   has_many :products
   has_many :orders
-  has_many :outgoing_orders, through: :users, source: :orders
+  has_many :outgoing_orders, through: :employees, source: :orders
   
   has_many :prices, through: :products
-  has_many :staffs
+  #has_many :staffs
   
   validates :name, length: { minimum: 3 }, presence: true, uniqueness: true
   validates :adress, presence: true

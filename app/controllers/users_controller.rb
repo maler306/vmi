@@ -12,14 +12,14 @@ class UsersController < ApplicationController
     
     def show
         @user = User.friendly.find(params[:id])
-        @organizations = current_user.organizations
+        @employers = current_user.employers
     end
 
     def add
         # render "new"
         @user = User.new(user_params)
         if @user.save 
-            redirect_to  current_user.organization(user_params)
+            redirect_to  new_staff_path #current_user.organization(user_params)
         else
             render("new")
         end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-      params.require(:user).permit(:first_name,:last_name, :organization_id, :position, :telephone, :email, :password)
+      params.require(:user).permit(:first_name,:last_name, :organization_id, :telephone, :email, :password)
     end
 
 

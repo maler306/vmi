@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_staff, only: [:show, :edit, :update, :destroy]
   authorize_resource
   add_breadcrumb "Главная", :root_path
 
@@ -12,6 +13,9 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    @employees=@organization.employees
+    #@staff = Staff.find(params[:id])
+    #@staff = @employees.staffs
   end
 
   # GET /organizations/new
@@ -77,5 +81,9 @@ class OrganizationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
       params.require(:organization).permit(:name, :adress, :org_type, :email, :telephone1)
+    end
+    
+    def set_staff
+      @staff = Staff.where(organization_id: params[:id])
     end
 end

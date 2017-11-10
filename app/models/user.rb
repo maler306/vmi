@@ -16,8 +16,6 @@
 #  first_name             :string
 #  last_name              :string
 #  telephone              :string
-#  organization_id        :integer
-#  position               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  admin                  :boolean
@@ -42,6 +40,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :staffs
   has_many :employers, through: :staffs, source: :organization
+  has_many :employer_orders, through: :employers, source: :outgoing_orders
   
   extend FriendlyId
   friendly_id :custom_slug, use: :slugged
@@ -60,6 +59,10 @@ class User < ActiveRecord::Base
   
   def custom_slug
       Translit.convert(name, :english).parameterize
+  end
+  
+  def position(organization)
+    staffs.find_by(organization_id: organization).position
   end
     
 end

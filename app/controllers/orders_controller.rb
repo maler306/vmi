@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = current_user.organization.order_list
+    @orders = current_user.employer_orders.distinct
   end
 
   # GET /orders/1

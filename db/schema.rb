@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803081658) do
+ActiveRecord::Schema.define(version: 20160825124109) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -33,16 +33,15 @@ ActiveRecord::Schema.define(version: 20160803081658) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
-    t.integer  "cart_id"
     t.integer  "quantity",       default: 1
     t.string   "state"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "container_id"
     t.string   "container_type"
+    t.integer  "price"
   end
 
-  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
@@ -51,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160803081658) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "organization_id"
+    t.integer  "seller_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160803081658) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "price"
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -115,8 +116,6 @@ ActiveRecord::Schema.define(version: 20160803081658) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "telephone"
-    t.integer  "organization_id"
-    t.string   "position"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin"
